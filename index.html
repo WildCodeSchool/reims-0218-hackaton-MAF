@@ -1,68 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 </head>
 <body>
-<ul id = "display"> </ul>
-<ul id = "displayBad"></ul>
+  <div class = "container">
+      <h1>Selectionner votre personnage :</h1>
+      <div class ="row" >
+        <ul id = "display"> </ul>
+      <div class ="row" >
+        <ul id = "displayBad"></ul>
+          <script>
+          //console.log ("start")
+          fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
+          .then(resp => {
+          return resp.json ()
+          })
+          .then (heros => {
+          console.log(heros)
+          const goods = heros.filter( hero => {
+          //console.log(hero)
+          //console.log(hero.biography.alignement)
 
-<h1>Selectionner votre personnage :</h1>
+          return hero.biography.alignment==="good"
+          }).slice(0,15)
+          console.log(goods)
+          let listGood = ""
+              for (let good of goods) {
+                console.log('good', good.biography.fullName)
+                //console.log(good)
+              
+                listGood += `<p> <img src="${good.images.xs}"/>${good.name}</p>`
+                
+              }
+              const htmlList = document.getElementById('display')
+              htmlList.innerHTML = listGood
 
-<script>
-//console.log ("start")
-fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
-.then(resp => {
-return resp.json ()
-})
-.then (heros => {
-console.log(heros)
-const goods = heros.filter( hero => {
-//console.log(hero)
-//console.log(hero.biography.alignement)
+          const bads = heros.filter( hero => {
+          //console.log(hero)
+          //console.log(hero.biography.alignement)
 
-return hero.biography.alignment==="good"
-}).slice(0,15)
-console.log(goods)
-let listGood = ""
-    for (let good of goods) {
-      console.log('good', good.biography.fullName)
-      //console.log(good)
-      listGood += `<li> ${good.name}<img src="${good.images.xs}"/></li>`
-    }
-    const htmlList = document.getElementById('display')
-    htmlList.innerHTML = listGood
+          return hero.biography.alignment==="bad"
+          }).slice(0,15)
+          console.log(bads)
+          let listBad = ""
+              for (let bad of bads) {
+                console.log('bad', bad.biography.fullName)
+                //console.log(bad)
+                listBad += `<p> <img src="${bad.images.xs}"/>${bad.name}</p>`
+              }
+              const htmlListBad = document.getElementById('displayBad')
+              htmlListBad.innerHTML = listBad
 
-const bads = heros.filter( hero => {
-//console.log(hero)
-//console.log(hero.biography.alignement)
-
-return hero.biography.alignment==="bad"
-}).slice(0,15)
-console.log(bads)
-let listBad = ""
-    for (let bad of bads) {
-      console.log('bad', bad.biography.fullName)
-      //console.log(bad)
-      listBad += `<li>${bad.name} <img src="${bad.images.xs}"/></li>`
-    }
-    const htmlListbad = document.getElementById('displayBad')
-    htmlListbad.innerHTML = listBad
-
-
-})
-
-
-
-
-</script>
-
-
-
-
+          })
+      </script>
+  </div>
+</div> 
 
 
 
