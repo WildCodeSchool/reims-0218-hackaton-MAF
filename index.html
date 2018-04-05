@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="style.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,62 +10,67 @@
 </head>
 <body>
   <div class = "container">
-      <h1>Selectionner votre personnage :</h1>
-      <div class ="row" >
-        <ul id = "display"> </ul>
-      <div class ="row" >
-        <ul id = "displayBad"></ul>
-          <script>
-          //console.log ("start")
-          fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
-          .then(resp => {
-          return resp.json ()
-          })
-          .then (heros => {
-          console.log(heros)
-          const goods = heros.filter( hero => {
-          //console.log(hero)
-          //console.log(hero.biography.alignement)
+    <h1>Selectionner votre personnage :</h1>
+    <div class ="row" >
+      <ul id = "display" class="col-sm-6"> </ul>
+      <ul id = "displayBad" class="col-sm-6"></ul>
+    </div>
+  </div> 
 
-          return hero.biography.alignment==="good"
-          }).slice(0,15)
-          console.log(goods)
-          let listGood = ""
-              for (let good of goods) {
-                console.log('good', good.biography.fullName)
-                //console.log(good)
-              
-                listGood += `<p> <img src="${good.images.xs}"/>${good.name}</p>`
-                
-              }
-              const htmlList = document.getElementById('display')
-              htmlList.innerHTML = listGood
+<script>
+//console.log ("start")
+fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
+.then(resp => {
+  return resp.json ()
+})
+.then (heros => {
+  const goods = heros.filter( hero => {
+    return hero.biography.alignment==="good"
+  }).slice(0,15)
+  let listGood = ""
+  for (let good of goods) {
+    listGood += `<li> ${good.name}<img src="${good.images.xs}"/><button id="${good.id}">choose</button></li>`
+  }
+  const htmlList = document.getElementById('display')
+  htmlList.innerHTML = listGood
 
-          const bads = heros.filter( hero => {
-          //console.log(hero)
-          //console.log(hero.biography.alignement)
-
-          return hero.biography.alignment==="bad"
-          }).slice(0,15)
-          console.log(bads)
-          let listBad = ""
-              for (let bad of bads) {
-                console.log('bad', bad.biography.fullName)
-                //console.log(bad)
-                listBad += `<p> <img src="${bad.images.xs}"/>${bad.name}</p>`
-              }
-              const htmlListBad = document.getElementById('displayBad')
-              htmlListBad.innerHTML = listBad
-
-          })
-      </script>
-  </div>
-</div> 
-
-
-
-
-
-
+  const bads = heros.filter( hero => {
+    return hero.biography.alignment==="bad"
+  }).slice(0,15)
+  let listBad = ""
+  for (let bad of bads) {
+    listBad += `<li>${bad.name} <img src="${bad.images.xs}"/><button  id="${bad.id}">choose</button></li>`
+  }
+  const htmlListbad = document.getElementById('displayBad')
+  htmlListbad.innerHTML = listBad
+  //get all button tags
+  const buttons = document.getElementsByTagName("button")
+  // variables that will store players
+  let player1, player2
+  // handle click on the buttons
+  for (button of buttons) {
+    button.addEventListener('click', (e) => {
+      // get the clicked button id
+      const choosenId = e.target.id
+      if(!player1) {
+        // the player 1 is not choosen
+        // find by id in the goods or in the bads
+        player1 = goods.find(good => good.id == choosenId) || bads.find(bad => bad.id == choosenId)
+        //TODO display player1
+      } else {
+        // the player 1 is already choosen
+        // find by id in the goods or in the bads
+        player2 = goods.find(good => good.id == choosenId) || bads.find(bad => bad.id == choosenId)
+        //TODO display player2
+      }
+      console.log('player1 ', player1,'player2 ', player2)
+      if (player1 && player2) {
+        // both players are chosen, start the fight
+        console.log('start the fight')
+      }
+    })
+  }
+})
+</script>
 </body>
 </html>
