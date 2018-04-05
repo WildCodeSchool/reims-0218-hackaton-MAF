@@ -1,54 +1,73 @@
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Super Hero Fighter Ultra Edition VII !</title>
-    <!-- Style à remettre sur un fichier à part -->
-    <style>
-        #gameBlock {
-            width: 75%;
-            margin: 0 auto;
-            background-color: black;
-            border: 2px solid red;
-        }
-
-        body {
-            background-image: url("res/CaptainAmericaBackdrop.png");
-            background-repeat: repeat;
-            background-position-x: 50%;
-        }
-
-        #gameBlock {
-            width: 100%;
-            height: 100%;
-            max-height: 400px;
-        }
-
-        #listCharacter {
-            border: 1px solid red;
-            padding: 1em;
-            color: fuchsia;
-            overflow: auto;
-            max-height: 400px;
-            max-width: 12.5%;
-            margin: 0;
-            padding: 0;
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
 </head>
 <body>
-    <h1>Super Hero Fighter Ultra Edition VII !</h1>
-    <p>Regardez dans la console pour une démo du système de combat</p>
-    <div id="gameBlock">
-        <div id="chooseCharacter">
-            <ul id="listCharacter">
+<ul id = "display"> </ul>
+<ul id = "displayBad"></ul>
 
-            </ul>
-        </div>
-    </div>
-    <!--<script src="res/script.js"></script>-->
-    <script src="res/battle.js"></script>
+<h1>Selectionner votre personnage :</h1>
+
+<script>
+//console.log ("start")
+fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
+.then(resp => {
+return resp.json ()
+})
+.then (heros => {
+console.log(heros)
+const goods = heros.filter( hero => {
+//console.log(hero)
+//console.log(hero.biography.alignement)
+
+return hero.biography.alignment==="good"
+}).slice(0,15)
+console.log(goods)
+let listGood = ""
+    for (let good of goods) {
+      console.log('good', good.biography.fullName)
+      //console.log(good)
+      listGood += `<li> ${good.name}<img src="${good.images.xs}"/></li>`
+    }
+    const htmlList = document.getElementById('display')
+    htmlList.innerHTML = listGood
+
+const bads = heros.filter( hero => {
+//console.log(hero)
+//console.log(hero.biography.alignement)
+
+return hero.biography.alignment==="bad"
+}).slice(0,15)
+console.log(bads)
+let listBad = ""
+    for (let bad of bads) {
+      console.log('bad', bad.biography.fullName)
+      //console.log(bad)
+      listBad += `<li>${bad.name} <img src="${bad.images.xs}"/></li>`
+    }
+    const htmlListbad = document.getElementById('displayBad')
+    htmlListbad.innerHTML = listBad
+
+
+})
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
