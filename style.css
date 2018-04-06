@@ -11,7 +11,7 @@ button#1 {
 }
 * {
     list-style: none;
-    font-family: 'Jua', sans-serif;
+    font-family: 'Permanent Marker', cursive;
     background-image: url(https://image.noelshack.com/fichiers/2018/14/5/1522985961-537ba702ad5b3.gif);
 }
 h1 {
@@ -24,6 +24,7 @@ li {
 }
 #display {
     border: 3px solid #007bff;
+    background-color: #0022ff;
     border-radius: 20px;
     margin-left: 175px;
     padding-bottom: 40px;
@@ -31,6 +32,7 @@ li {
 }
 #displayBad {
     border: 3px solid #dc3545;
+    background-color: #fe1045;
     border-radius: 20px;
     margin-left: 200px;
     padding-bottom: 40px;
@@ -43,7 +45,7 @@ h2 {
     color: white;
 }
 button {
-margin: right 20px;
+margin: right 10px;
 }
 good.name {
   color: red;  
@@ -51,21 +53,42 @@ good.name {
 #G {
     text-align: center;
     margin-right: 40px;
-    font-size: 20px;
+    font-size: 18px;
 }
 #B {
     text-align: center;
     margin-right: 40px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 #battleScreen {
     display: none;
     width: 60%;
-    height: 400px;
-    border: 8px solid rgb(99, 78, 61);
+    height: 600px;
+    border: 6px solid #f90;
     margin: auto;
-    border-radius: 70px;
+    border-radius: 10px;
     margin-top: 60px;
     background-color: red;
+    color: white;
+}
+
+#winner {
+    position: absolute;
+    right: 26%;
+    top: 20%; /* Valeur approximative, à optimiser correctement */
+}
+button, p {
+    color: white;
+    left: 30%;
+    margin-left: 20px;
+}
+#BB {
+   margin-right: 40px; 
+}
+.btn-danger {
+margin: auto;
+}
+.btn-primary {
+margin: auto;
 }
