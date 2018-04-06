@@ -8,11 +8,12 @@ const startFight = (battler1, battler2) => {
     while (battler1.powerstats.power > 0 && battler2.powerstats.power > 0) {
         document.getElementById("battleScreen").innerHTML += `<p>${battler1.name} attaque ${battler2.name} !</p>`
         degats = battler1.powerstats.strength - (Math.round(battler2.powerstats.durability / 2)) // Math.round force les dégâts à être un nombre entier
-        if (degats <= 0) {
-            document.getElementById("battleScreen").innerHTML += `<p>${battler2.name} ne subit aucun dégât ! Reste ${battler2.powerstats.power} PV.</p>`
+        if (degats <= 1) {
+            battler2.powerstats.power--
+            document.getElementById("battleScreen").innerHTML += `<p>${battler2.name} perd 1 PV ! Reste ${battler2.powerstats.power} PV.</p>`
         } else {
             battler2.powerstats.power -= degats
-            if (battler2.powerstats.power <= 0) {
+            if (battler2.powerstats.power <= 1) {
                 document.getElementById("battleScreen").innerHTML += `<p>${degats} dégâts infligés à ${battler2.name} ! ${battler2.name} vaincu ! ${battler1.name} a gagné !</p>`
                 resetStats(battler1, battler2, startPVBattler1, startPVBattler2)
                 showWinner(battler1)
@@ -23,8 +24,9 @@ const startFight = (battler1, battler2) => {
         }
         document.getElementById("battleScreen").innerHTML += `<p>${battler2.name} attaque ${battler1.name} !</p>`
         degats = battler2.powerstats.strength - (Math.round(battler1.powerstats.durability / 2))
-        if (degats <= 0) {
-            document.getElementById("battleScreen").innerHTML += `<p>${battler1.name} ne subit aucun dégât ! Reste ${battler1.powerstats.power} PV.</p>`
+        if (degats <= 1) {
+            battler1.powerstats.power--
+            document.getElementById("battleScreen").innerHTML += `<p>${battler1.name} perd 1 PV ! Reste ${battler1.powerstats.power} PV.</p>`
         } else {
             battler1.powerstats.power -= degats
             if (battler1.powerstats.power <= 0) {
@@ -47,4 +49,5 @@ const resetStats = (battler1, battler2, battler1StartPV, battler2StartPV) => {
 // Photo du gagnant
 const showWinner = (winner) => {
     document.getElementById("battleScreen").innerHTML += `<img id="winner" src="${winner.images.sm}">`
+    document.getElementById("battleScreen").innerHTML += `<button onclick="location.reload()">Recommencer ?</button>`
 }
