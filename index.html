@@ -17,7 +17,11 @@
       <ul id = "displayBad" class="col-md-3"></ul>
     </div>
     <h2 id = "nextFight"></h2>
-  </div> 
+  </div>
+
+  <div id="battleScreen">
+
+  </div>
 
 <script>
 //console.log ("start")
@@ -66,7 +70,7 @@ fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
         //TODO display player2
       }
       console.log('player1 ', player1,'player2 ', player2)
-      if (player1 && player2) {
+      if (player1 && player2 && (player1 != player2)) {
         // both players are chosen, start the fight
         console.log('start the fight')
         const htmlfight = `Next fight : ${player1.name} vs ${player2.name}`
@@ -76,7 +80,12 @@ fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
 
          const nextfight = document.getElementById('nextFight')
           // console.log(nextfight)
-          nextfight.innerHTML = htmlfight    
+          nextfight.innerHTML = htmlfight
+          document.getElementById("battleScreen").style.display = "block"
+          htmlList.style.display = "none"
+          htmlListbad.style.display = "none"
+
+          startFight(player1, player2)
 
          
       }
@@ -84,6 +93,7 @@ fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
   }
 })
 </script>
+<script src="res/battle.js"></script>
 </body>
 </html>
 
