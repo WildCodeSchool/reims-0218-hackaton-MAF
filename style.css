@@ -1,7 +1,8 @@
 img {
     border: 2px solid rgb(0, 0, 0);
-    border-radius: 10px;
-    margin-top: 40px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-bottom: 10px;
 }
 
 button#1 {
@@ -9,6 +10,51 @@ button#1 {
     border-radius: 10px;
 }
 * {
+    list-style: none;
     font-family: 'Jua', sans-serif;
     background-image: url(https://image.noelshack.com/fichiers/2018/14/5/1522985961-537ba702ad5b3.gif);
+}
+h1 {
+color: white;
+}
+li {
+    color: white;
+    margin-left: 40px;
+    
+}
+#display {
+    border: 3px solid #007bff;
+    border-radius: 20px;
+    margin-left: 175px;
+    padding-bottom: 40px;
+
+}
+#displayBad {
+    border: 3px solid #dc3545;
+    border-radius: 20px;
+    margin-left: 200px;
+    padding-bottom: 40px;
+}
+h1 {
+    margin-left: 260px;
+}
+h2 {
+    margin-left: 350px;
+    color: white;
+}
+button {
+margin: right 20px;
+}
+good.name {
+  color: red;  
+}
+#G {
+    text-align: center;
+    margin-right: 40px;
+    font-size: 20px;
+}
+#B {
+    text-align: center;
+    margin-right: 40px;
+    font-size: 20px;
 }

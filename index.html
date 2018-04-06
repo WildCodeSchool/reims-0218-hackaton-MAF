@@ -13,8 +13,8 @@
   <div class = "container">
     <h1>Selectionner votre personnage :</h1>
     <div class ="row" >
-      <ul id = "display" class="col-lg-6"> </ul>
-      <ul id = "displayBad" class="col-lg-6"></ul>
+      <ul id = "display" class="col-md-3"> </ul>
+      <ul id = "displayBad" class="col-md-3"></ul>
     </div>
     <h2 id = "nextFight"></h2>
   </div> 
@@ -31,7 +31,7 @@ fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
   }).slice(0,15)
   let listGood = ""
   for (let good of goods) {
-    listGood += `<li> <img src="${good.images.sm}"/><br>${good.name}<button type="button" class="btn btn-primary" id="${good.id}">choose</button><br></li>`
+    listGood += `<li > <img src="${good.images.sm}"/><br><div id="G">${good.name}</div><button type="button" class="btn btn-primary" id="${good.id}">&nbsp;&nbs&nbspChoisir ce heros&nbsp;&nbsp;&nbsp;</button></li>`
   }
   const htmlList = document.getElementById('display')
   htmlList.innerHTML = listGood
@@ -41,7 +41,7 @@ fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
   }).slice(0,15)
   let listBad = ""
   for (let bad of bads) {
-    listBad += `<li><img src="${bad.images.sm}"/><br>${bad.name} <button type="button" class="btn btn-danger"  id="${bad.id}">choose</button></li>`
+    listBad += `<li><img src="${bad.images.sm}"/><br><div id="B">${bad.name}</div> <button type="button" class="btn btn-danger"  id="${bad.id}">&nbsp;&nbsp;&nbsp;Choisir ce vilain&nbsp;&nbsp;&nbsp;</button></li>`
   }
   const htmlListbad = document.getElementById('displayBad')
   htmlListbad.innerHTML = listBad
