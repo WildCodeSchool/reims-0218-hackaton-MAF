@@ -1,0 +1,54 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Super Hero Fighter Ultra Edition VII !</title>
+    <!-- Style à remettre sur un fichier à part -->
+    <style>
+        #gameBlock {
+            width: 75%;
+            margin: 0 auto;
+            background-color: black;
+            border: 2px solid red;
+        }
+
+        body {
+            background-image: url("res/CaptainAmericaBackdrop.png");
+            background-repeat: repeat;
+            background-position-x: 50%;
+        }
+
+        #gameBlock {
+            width: 100%;
+            height: 100%;
+            max-height: 400px;
+        }
+
+        #listCharacter {
+            border: 1px solid red;
+            padding: 1em;
+            color: fuchsia;
+            overflow: auto;
+            max-height: 400px;
+            max-width: 12.5%;
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Super Hero Fighter Ultra Edition VII !</h1>
+    <p>Regardez dans la console pour une démo du système de combat</p>
+    <div id="gameBlock">
+        <div id="chooseCharacter">
+            <ul id="listCharacter">
+
+            </ul>
+        </div>
+    </div>
+    <!--<script src="res/script.js"></script>-->
+    <script src="res/battle.js"></script>
+</body>
+</html>
