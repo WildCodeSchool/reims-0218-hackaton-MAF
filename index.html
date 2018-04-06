@@ -31,7 +31,7 @@ fetch('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
   }).slice(0,15)
   let listGood = ""
   for (let good of goods) {
-    listGood += `<li > <img src="${good.images.sm}"/><br><div id="G">${good.name}</div><button type="button" class="btn btn-primary" id="${good.id}">&nbsp;&nbs&nbspChoisir ce heros&nbsp;&nbsp;&nbsp;</button></li>`
+    listGood += `<li > <img src="${good.images.sm}"/><br><div id="G">${good.name}</div><button type="button" class="btn btn-primary" id="${good.id}">&nbsp;&nbsp;&nbsp;Choisir ce heros&nbsp;&nbsp;&nbsp;</button></li>`
   }
   const htmlList = document.getElementById('display')
   htmlList.innerHTML = listGood
